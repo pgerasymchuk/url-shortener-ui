@@ -28,7 +28,7 @@ export default function AboutPage() {
                 </ul>
 
                 <Typography variant="body1" paragraph>
-                    🔗 Authenticated users can:
+                    Authenticated users can:
                 </Typography>
 
                 <ul>

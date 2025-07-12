@@ -80,7 +80,7 @@ export default function UrlDetailsPage() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                {`${apiBaseUrl}/r/${url.shortCode}`}
+                                {`${apiBaseUrl}${url.shortUrl}`}
                             </a>
                         </Typography>
 

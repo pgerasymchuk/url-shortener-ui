@@ -30,16 +30,15 @@ import {useAuth} from "../providers/authProvider.jsx";
 export default function MainPage() {
     const [urls, setUrls] = useState([]);
     const [originalUrl, setOriginalUrl] = useState("");
-    const [isAdminView, setIsAdminView] = useState(false);
-    const [isAdmin, setIsAdmin] = useState(false);
     const navigate = useNavigate();
-    const {setToken} = useAuth();
+    const [showAllUrls, setShowAllUrls] = useState(false);
+    const {setToken, isAdmin} = useAuth();
 
     const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
     const fetchUrls = async () => {
         try {
-            const response = isAdmin && isAdminView ? await getAllUrls() : await getMyUrls();
+            const response = showAllUrls ? await getAllUrls() : await getMyUrls();
             setUrls(response.data);
         } catch (err) {
             if (err.response?.status === 401) {
@@ -49,9 +48,8 @@ export default function MainPage() {
     };
 
     useEffect(() => {
-        setIsAdmin(true);
         fetchUrls();
-    }, [isAdminView]);
+    }, []);
 
     const handleCreate = async () => {
         if (!originalUrl.trim()) return;
@@ -105,12 +103,12 @@ export default function MainPage() {
                         Shorten
                     </Button>
                 </Box>
-                {isAdmin && (
+                {isAdmin() && (
                     <FormControlLabel
                         control={
                             <Switch
-                                checked={isAdminView}
-                                onChange={(e) => setIsAdminView(e.target.checked)}
+                                checked={showAllUrls}
+                                onChange={(e) => setShowAllUrls(e.target.checked)}
                             />
                         }
                         label="Show all URLs"

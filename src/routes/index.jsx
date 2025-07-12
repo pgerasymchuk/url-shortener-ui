@@ -5,9 +5,17 @@ import SignInPage from "../pages/SignInPage.jsx";
 import MainPage from "../pages/MainPage.jsx";
 import UrlDetailsPage from "../pages/UrlDetailsPage.jsx";
 import {useAuth} from "../providers/authProvider.jsx";
+import AboutPage from "../pages/AboutPage.jsx";
 
 const Routes = () => {
     const {token} = useAuth();
+
+    const routesForPublic = [
+        {
+            path: "/about",
+            element: <AboutPage />,
+        }
+    ];
 
     const routesForAuthenticatedOnly = [
         {
@@ -45,6 +53,7 @@ const Routes = () => {
     ];
 
     const router = createBrowserRouter([
+        ...routesForPublic,
         ...(!token ? routesForNotAuthenticatedOnly : []),
         ...routesForAuthenticatedOnly,
     ]);
