@@ -109,6 +109,12 @@ export default function SignUpPage() {
                     </Typography>
                 </Box>
             </Paper>
+
+            <Box display="flex" justifyContent="center" mt={5}>
+                <Link component={RouterLink} to="/about">
+                    About
+                </Link>
+            </Box>
         </Container>
     );
 }

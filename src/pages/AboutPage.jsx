@@ -34,7 +34,6 @@ export default function AboutPage() {
                 <ul>
                     <li><Typography variant="body1">Create short links</Typography></li>
                     <li><Typography variant="body1">Manage (view/delete) their own links</Typography></li>
-                    <li><Typography variant="body1">View detailed stats per link</Typography></li>
                 </ul>
 
                 <Typography variant="body1" paragraph>

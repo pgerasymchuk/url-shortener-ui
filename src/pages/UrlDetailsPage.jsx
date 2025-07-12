@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import {useParams, useNavigate, Link as RouterLink} from "react-router-dom";
 import {
     Container,
     Typography,
@@ -11,6 +11,7 @@ import {
     Button,
 } from "@mui/material";
 import { getUrlDetails } from "../api/endpoints";
+import Link from "@mui/material/Link";
 
 export default function UrlDetailsPage() {
     const { id } = useParams();
@@ -102,6 +103,12 @@ export default function UrlDetailsPage() {
                     </>
                 )}
             </Paper>
+
+            <Box display="flex" justifyContent="center" mt={5}>
+                <Link component={RouterLink} to="/about">
+                    About
+                </Link>
+            </Box>
         </Container>
     );
 }

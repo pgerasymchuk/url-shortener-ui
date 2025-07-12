@@ -18,6 +18,7 @@ import { AppBar, Toolbar } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Delete, Visibility } from "@mui/icons-material";
 import { useEffect, useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
     getMyUrls,
@@ -26,6 +27,7 @@ import {
     deleteUrl,
 } from "../api/endpoints";
 import {useAuth} from "../providers/authProvider.jsx";
+import Link from "@mui/material/Link";
 
 export default function MainPage() {
     const [urls, setUrls] = useState([]);
@@ -173,6 +175,12 @@ export default function MainPage() {
                     </TableBody>
                 </Table>
             </Paper>
+
+            <Box display="flex" justifyContent="center" mt={5}>
+                <Link component={RouterLink} to="/about">
+                    About
+                </Link>
+            </Box>
         </Container>
     );
 }
